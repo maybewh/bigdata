@@ -1,4 +1,4 @@
-package com.abchina.flink.apitest.beans;
+package com.atguigu.flink.apitest.beans;
 
 public class SensorReading {
 

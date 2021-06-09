@@ -1,6 +1,6 @@
-package com.abchina.flink.apitest.source;
+package com.atguigu.flink.apitest.source;
 
-import com.abchina.flink.apitest.beans.SensorReading;
+import com.atguigu.flink.apitest.beans.SensorReading;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
