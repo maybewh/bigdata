@@ -8,6 +8,8 @@ public class SensorReading {
 
     private Double temperature;
 
+    public SensorReading() {}
+
     public SensorReading(String id, Long timestamp, Double temperature) {
         this.id = id;
         this.timestamp = timestamp;
