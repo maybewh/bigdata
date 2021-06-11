@@ -20,12 +20,13 @@ public class WindowTest3_EventTimeWindow {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
+        env.setParallelism(1); // 之所以所有数据在截止之后才输出是因为默认的并行度并不为1
         // Flink1.12.X 已经默认就是使用EventTime了，所以不需要这行代码
 //        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.getConfig().setAutoWatermarkInterval(100);
 
         // socket文本流
-        DataStream<String> inputStream = env.socketTextStream("192.168.10.132", 7777);
+        DataStream<String> inputStream = env.socketTextStream("192.168.242.132", 7777);
 
         // 转换成SensorReading类型，分配时间时间戳
         DataStream<SensorReading> dataStream = inputStream.map(line -> {
@@ -39,8 +40,8 @@ public class WindowTest3_EventTimeWindow {
         // 基于事件时间的开窗聚合，统计15秒内温度的最小值
         SingleOutputStreamOperator<SensorReading> minTempStream = dataStream.keyBy(SensorReading::getId)
                 .window(TumblingEventTimeWindows.of(Time.seconds(15)))
-                /*.allowedLateness(Time.minutes(1))
-                .sideOutputLateData(outputTag)*/
+                .allowedLateness(Time.minutes(1))
+                .sideOutputLateData(outputTag)
                 .minBy("temperature");
 
         minTempStream.print("minTemp");

@@ -9,7 +9,6 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.util.Collector;
-import org.apache.flink.util.OutputTag;
 
 public class ProcessTest1_KeyedProcessFunction {
 
@@ -19,7 +18,7 @@ public class ProcessTest1_KeyedProcessFunction {
         env.setParallelism(1);
 
         // Socket文本流
-        DataStream<String> inputStream = env.socketTextStream("192.168.10.132",7777);
+        DataStream<String> inputStream = env.socketTextStream("192.168.242.132",7777);
 
         // 转换成SensorReading类型
         DataStream<SensorReading> dataStream = inputStream.map(line -> {
