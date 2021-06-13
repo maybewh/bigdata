@@ -1,4 +1,4 @@
-package com.abchina.flink;
+package com.atguigu.hbase;
 
 import static org.junit.Assert.assertTrue;
 
