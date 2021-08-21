@@ -1,9 +1,6 @@
 package com.atguigu.hotitems.analysis;
 
 import com.atguigu.hotitems.analysis.pojo.UserBehavior;
-import org.apache.flink.api.common.eventtime.WatermarkStrategy;
-import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.runtime.execution.Environment;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;

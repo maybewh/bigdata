@@ -13,7 +13,6 @@
       <module>flink</module>
     <module>kafka</module>
       <module>initLearn</module>
-      <module>HotGoodsAnalysis</module>
       <module>zookeeper</module>
   </modules>
 
